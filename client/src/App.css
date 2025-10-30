@@ -1,20 +1,36 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap");
 
+@font-face {
+	font-family: "MarkW05";
+	src: url("../fonts/MarkW05-Medium.woff2") format("woff2"),
+		url("../fonts/MarkW05-Medium.woff") format("woff");
+	font-weight: 500;
+}
+
+* {
+	box-sizing: border-box;
+}
+
 body {
 	margin: 0;
-	font-family: "DM Sans", Arial, sans-serif;
+	font-family: "MarkW05", sans-serif;
 	color: white;
 	background-color: rgb(17, 17, 17);
 }
 
-nav {
+nav:not(.left):not(.right) {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-
-	padding: 0.5em 10%;
-	background-color: rgb(17, 76, 134);
+	height: 80px;
+	padding-left: 36px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+	width: 100%;
 }
 
 nav a {
@@ -22,25 +38,66 @@ nav a {
 	text-decoration: none;
 }
 
-nav a::after {
-	display: block;
-	content: "-";
-	background-color: white;
-	font-size: 0.05em;
-	transform: translateY(4px);
-	opacity: 0;
-	transition: all 0.3s ease;
-	width: 0%;
-}
-
-nav a:hover::after {
-	opacity: 1;
-	width: 100%;
-	transform: translateY(2px);
+nav > .left {
+	display: flex;
+	align-items: center;
+	gap: 0em;
 }
 
 nav > .left a {
-	font-size: 2em;
+	position: relative;
+	display: block;
+	flex-shrink: 0;
+}
+
+.riot-logo {
+	margin-right: 40px;
+}
+
+nav > .left a:not(.riot-logo) {
+	font-size: 13px;
+	line-height: 140%;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	margin: 0;
+	padding: 7.5px 16px;
+	position: relative;
+	text-align: center;
+	top: -2px;
+}
+
+nav > .left a:not(.riot-logo) {
+	background-color: #ffffff00;
+	border-radius: 4px;
+}
+
+nav > .left a:not(.riot-logo):hover {
+	background-color: #ffffff22;
+}
+
+nav > .left a:not(.riot-logo)::after {
+	content: "";
+	position: absolute;
+	bottom: -10px;
+	left: 50%;
+	transform: translateX(-50%);
+	height: 3px;
+	width: 100%;
+	background-color: rgb(209, 28, 28);
+	border-radius: 2px;
+	opacity: 0;
+}
+
+nav > .left a:not(.riot-logo):hover::after {
+	opacity: 1;
+}
+
+.riot-logo {
+	display: inline-block;
+	align-items: center;
+	position: relative;
+	width: 75px;
+	height: 24px;
 }
 
 nav > .right {
